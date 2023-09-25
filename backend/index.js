@@ -17,4 +17,8 @@ const io = socketIO(expressServer,
 io.on('connection', socket =>
 {
     socket.emit('welcome', 'Welcome to the server.')
+
+    socket.on("clientConnect", data => {
+        console.log(socket.id, ' has connected');
+    })
 })

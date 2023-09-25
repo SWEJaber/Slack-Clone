@@ -11,7 +11,7 @@ const RoomSections = (props: { title: string, rooms: string[]}) =>
             </div>
 
             <div className='ms-2 w-fit'>
-                {props.rooms.map(room =><p className='cursor-pointer'>{room}</p>)}
+                {props.rooms.map(room =><p key={room} className='cursor-pointer'>{room}</p>)}
             </div> 
         </div>
     )
@@ -47,7 +47,7 @@ const Rooms = (props: Props) =>
 
             <RoomSections 
                 title='Direct Messages'
-                rooms={["Main Room", "Meeting Room"]}
+                rooms={["Message yourself"]}
             /> 
         </div>
     )
