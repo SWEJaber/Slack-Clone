@@ -1,31 +1,35 @@
 import { GoTriangleDown } from 'react-icons/go'
+import { Room } from './types';
 
-const RoomSections = (props: { title: string, rooms: string[]}) =>
+
+
+const RoomSections = (props: { title: string, rooms: Room[] }) =>
 {
+    const { title, rooms } = props;
+
     return (
         <div className='flex flex-col gap-2 text-white select-none'>
             <div className='flex items-center gap-2 cursor-pointer'>
                 <GoTriangleDown className='fill-white' size={20} />
 
-                <p>{props.title}</p>
+                <p>{title}</p>
             </div>
 
             <div className='ms-2 w-fit'>
-                {props.rooms.map(room =><p key={room} className='cursor-pointer'>{room}</p>)}
+                {rooms.map(room =><p key={room.id} className='cursor-pointer'>{room.title}</p>)}
             </div> 
         </div>
     )
 }
 
-
 type Props = 
 {
-    className?: string
+    className?: string,
+    rooms: Room[]
 }
 
 const Rooms = (props: Props) => 
 {
-
     return (
         <div 
             className=
@@ -42,12 +46,12 @@ const Rooms = (props: Props) =>
             
             <RoomSections 
                 title='Rooms'
-                rooms={["Main Room", "Meeting Room"]}
+                rooms={props.rooms}
             />
 
             <RoomSections 
                 title='Direct Messages'
-                rooms={["Message yourself"]}
+                rooms={[]}
             /> 
         </div>
     )

@@ -1,3 +1,5 @@
+import { Room } from "./types"
+
 const Message = () =>
 {
     return (
@@ -27,11 +29,14 @@ const Message = () =>
 }
 
 
-type Props = {}
+type Props = 
+{
+    room: Room | null
+}
 
 const ChatSection = (props: Props) => 
 {
-    const messages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+    // const messages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
     return (
         <div className='flex flex-col justify-between h-full w-full bg-slate-900 p-4 '>
@@ -53,7 +58,7 @@ const ChatSection = (props: Props) =>
 
             <ul className='h-[90%] overflow-y-scroll px-4 flex flex-col gap-2'>
 
-                {messages.map(message => <Message key={message} />)}
+                {props.room?.history?.map(message => <Message key={message} />)}
             </ul>
 
             <input 
